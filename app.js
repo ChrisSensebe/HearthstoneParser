@@ -26,7 +26,7 @@ MongoClient.connect("mongodb://localhost:27017/hearthstone", function(err, db){
 		// Saves all cards in db
 		db.collection('allSets').insert(allCards, function(err, result){
 			if(err){
-				console.error('error :' + err);
+				console.error(err);
 			};
 			console.log('Cards saved in db');
 			db.close();
