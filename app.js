@@ -11,17 +11,17 @@ MongoClient.connect("mongodb://localhost:27017/hearthstone", function(err, db){
 		if(err){
 			console.error(err);
 		}
-		var allSets = JSON.parse(data);
-		var keys    = Object.keys(allSets);
-		var sets    = [];
+		var allSets  = JSON.parse(data);
+		var allCards = [];
 		for(var property in allSets){
-			sets = sets.concat(allSets[property]);
+			allCards = allCards.concat(allSets[property]);
 		}
-		db.collection('allSets').insert(sets, function(err, doc){
+
+		db.collection('allSets').insert(allCards, function(err, result){
 			if(err){
 				console.error(err);
-			}
-			console.log('document inserted');
+			};
+			console.log('Document inserted');
 		});
 		db.close();
 	});
