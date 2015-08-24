@@ -30,7 +30,7 @@ MongoClient.connect(databaseUrl, function(err, db){
 		db.collection(collectionName).insert(allCards, function(err, result){
 			if(err){
 				console.error(err);
-			};
+			}
 			console.log('Cards saved in db');
 			db.close();
 		});
