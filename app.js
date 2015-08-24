@@ -6,7 +6,7 @@ var mongodb        = require('mongodb'),
 	collectionName = process.argv[4];
 
 // Connects to db
-MongoClient.connect(dbUrl, function(err, db){
+MongoClient.connect(databaseUrl, function(err, db){
 
 	if(err){
 		console.error(err);
@@ -27,7 +27,7 @@ MongoClient.connect(dbUrl, function(err, db){
 			allCards = allCards.concat(allSets[property]);
 		}
 		// Saves all cards in db
-		db.collection(collection).insert(allCards, function(err, result){
+		db.collection(collectionName).insert(allCards, function(err, result){
 			if(err){
 				console.error(err);
 			};
