@@ -1,15 +1,18 @@
-var mongodb     = require('mongodb'),
-	fs          = require('fs'),
-	MongoClient = mongodb.MongoClient;
+var mongodb        = require('mongodb'),
+	fs             = require('fs'),
+	MongoClient    = mongodb.MongoClient,
+	filePath       = process.argv[2],
+	databaseUrl    = process.argv[3],
+	collectionName = process.argv[4];
 
 // Connects to db
-MongoClient.connect("mongodb://localhost:27017/hearthstone", function(err, db){
+MongoClient.connect(dbUrl, function(err, db){
 
 	if(err){
 		console.error(err);
 	}
 	// Gets data from file ALLSets.json -> {collection : [{card},{card}...], collection : [{card},{card}...], ....}
-	fs.readFile('ALLSets.json', function(err, data){
+	fs.readFile(filePath, function(err, data){
 		if(err){
 			console.error(err);
 		}
@@ -24,7 +27,7 @@ MongoClient.connect("mongodb://localhost:27017/hearthstone", function(err, db){
 			allCards = allCards.concat(allSets[property]);
 		}
 		// Saves all cards in db
-		db.collection('allSets').insert(allCards, function(err, result){
+		db.collection(collection).insert(allCards, function(err, result){
 			if(err){
 				console.error(err);
 			};
@@ -33,3 +36,7 @@ MongoClient.connect("mongodb://localhost:27017/hearthstone", function(err, db){
 		});
 	});
 });
+
+// "mongodb://localhost:27017/hearthstone"
+// 'ALLSets.json'
+// 'allSets'
