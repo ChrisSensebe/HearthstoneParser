@@ -12,4 +12,4 @@
 
 # run
 
-* node app.js <path to json file> <database url> <collection name>
+* node app.js path_to_json_file database_url collection_name
