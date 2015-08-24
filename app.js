@@ -36,7 +36,3 @@ MongoClient.connect(dbUrl, function(err, db){
 		});
 	});
 });
-
-// "mongodb://localhost:27017/hearthstone"
-// 'ALLSets.json'
-// 'allSets'
