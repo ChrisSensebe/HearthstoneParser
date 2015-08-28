@@ -22,7 +22,7 @@ MongoClient.connect(databaseUrl, function(err, db){
 		for(var property in allSets){
 			// Adds set name for each card
 			for(var i=0; i<allSets[property].length; i++){
-				allSets[property][i].set = property;
+				allSets[property][i].setName = property;
 			}
 			allCards = allCards.concat(allSets[property]);
 		}
